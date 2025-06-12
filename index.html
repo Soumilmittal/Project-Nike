@@ -4,85 +4,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NIKE</title>
+    <title>NIKE - Limited Edition</title>
+
+    <!-- Google Fonts: Poppins for body, Bebas Neue for headings -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
+    <!-- Remix Icon for icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-    <div class="main">
-        <div class="nav">
-            <div class="nav-part-1">
-                <img src="nike-logo-0.png" alt="logo">
-                <ul>
-                    <li>Home</li>
-                    <li>Men</li>
-                    <li>Women</li>
-                    <li>Collection</li>
-                    <li>Contact</li>
-                </ul>
-            </div>
-            <div class="nav-part-2">
-                <i class="ri-search-line"></i>
-                <i class="ri-shopping-cart-line"></i>
-                <i class="ri-menu-line"></i>
-            </div>
-        </div>
-        <div class="content">
-            <div class="content-left">
-                <h5>Explore limited edition</h5>
-                <h1>Nike limited edition</h1>
-                <p>Unlesh the extraordinary. Elevate your game with Nike's Limited Edition. where innovation meets
-                    style, leaving a lasting mark. Just do it. </p>
-                <button class="btn">Shop now</button>
-            </div>
-            <div class="content-right">
-                <div class="product">
-                    <img src="air-max-1-lx-shoes.png" alt="product">
-                    <h4>Nike Air Max 1</h4>
-                    <p class="category">Men's shoes</p>
-                    <p class="color">Color: White</p>
-                    <p class="price">$220</p>
+    <div class="page-wrapper">
+        <section class="main-section">
+            <nav class="nav">
+                <div class="nav-part-1">
+                    <div class="logo">
+                        <img src="nike-logo-0.png" alt="My Company Logo">
+                    </div>
+                    <ul>
+                        <li>Home</li>
+                        <li>Men</li>
+                        <li>Women</li>
+                        <li>Collection</li>
+                        <li>Contact</li>
+                    </ul>
                 </div>
-                <div class="product">
-                    <img src="air-peg-2k5-shoes.png" alt="product">
-                    <h4>Nike Air Peg 2k5</h4>
-                    <p class="category">Men's shoes</p>
-                    <p class="color">Color: White</p>
-                    <p class="price">$250</p>
+                <div class="nav-part-2">
+                    <i class="ri-search-line"></i>
+                    <i class="ri-shopping-cart-line"></i>
+                    <i class="ri-menu-line menu-icon"></i>
                 </div>
-                <div class="product">
-                    <img src="lunar-roam-shoes.png" alt="product">
-                    <h4>Nike Lunar Roam</h4>
-                    <p class="category">Men's shoes</p>
-                    <p class="color">Color: Sleepy Blue</p>
-                    <p class="price">$260</p>
+            </nav>
+            <div class="content">
+                <div class="content-left">
+                    <h5>Explore limited edition</h5>
+                    <h1>Nike<br>limited edition</h1>
+                    <p>Unleash the extraordinary. Elevate your game with Nike's Limited Edition, where innovation meets
+                        style, leaving a lasting mark. Just do it.</p>
+                    <button class="btn">Shop now</button>
                 </div>
-                <div class="product">
-                    <img src="nocta-glide-shoes.png" alt="product">
-                    <h4>Nike Nocta Glide</h4>
-                    <p class="category">Men's shoes</p>
-                    <p class="color">Color: White</p>
-                    <p class="price">$300</p>
-                </div>
-                <div class="product">
-                    <img src="terminator-high-shoes.png" alt="product">
-                    <h4>Nike Terminator</h4>
-                    <p class="category">Men's shoes</p>
-                    <p class="color">Color: White</p>
-                    <p class="price">$350</p>
+                <div class="content-right">
+                    <div class="gif-container">
+                        <img src="nikebannervideo-ezgif.com-video-to-gif-converter.gif"
+                            alt="Dynamic Nike shoe animation">
+                    </div>
                 </div>
             </div>
-
-        </div>
+        </section>
+        <br><br>
+        <!-- New section for showing products -->
+        <section class="product-showcase">
+            <h2>Our Latest Drops</h2>
+            <div class="product-grid">
+                <!-- Products moved here -->
+                <div class="product">
+                    <img src="https://placehold.co/400x400/FFFFFF/1A1A1A?text=Shoe+1" alt="product">
+                    <div class="product-info">
+                        <h4>Nike Air Max 1</h4>
+                        <p class="category">Men's shoes</p>
+                        <p class="price">$220</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://placehold.co/400x400/FFFFFF/1A1A1A?text=Shoe+2" alt="product">
+                    <div class="product-info">
+                        <h4>Nike Air Peg 2k5</h4>
+                        <p class="category">Men's shoes</p>
+                        <p class="price">$250</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://placehold.co/400x400/FFFFFF/1A1A1A?text=Shoe+3" alt="product">
+                    <div class="product-info">
+                        <h4>Nike Lunar Roam</h4>
+                        <p class="category">Men's shoes</p>
+                        <p class="price">$260</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://placehold.co/400x400/FFFFFF/1A1A1A?text=Shoe+4" alt="product">
+                    <div class="product-info">
+                        <h4>Nike Nocta Glide</h4>
+                        <p class="category">Men's shoes</p>
+                        <p class="price">$300</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://placehold.co/400x400/FFFFFF/1A1A1A?text=Shoe+5" alt="product">
+                    <div class="product-info">
+                        <h4>Nike Terminator</h4>
+                        <p class="category">Men's shoes</p>
+                        <p class="price">$350</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-
 </body>
 
 </html>
