@@ -60,15 +60,24 @@ html, body {
     gap: 50px; /* Use gap for spacing */
 }
 
-.nav .logo svg {
-    width: 80px;
-    height: auto;
-    fill: #f5f5f5;
+.logo {
+    height: 48px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    transition: fill 0.3s ease;
+}
+.logo img {
+    height: 100%;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    transition: fill 0.3s ease; 
+    filter: invert(1); /* Invert colors for white logo */  
 }
 
-.nav .logo svg:hover {
+.logo img:hover {
     fill: #FF6700; /* Nike Orange on hover */
 }
 
