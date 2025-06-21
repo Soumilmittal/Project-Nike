@@ -60,18 +60,16 @@ html, body {
     gap: 50px; /* Use gap for spacing */
 }
 
-.nav .logo img { /* Target the <img> tag directly */
-    width: 80px; /* Adjust this value as needed for your logo's size */
-    height: auto; /* Maintain the aspect ratio of your image */
+.nav .logo svg {
+    width: 80px;
+    height: auto;
+    fill: #f5f5f5;
     cursor: pointer;
-    /* For images, 'fill' doesn't apply. */
-    /* If you want color changes, you'd typically prepare different image files (e.g., a white version and an orange version) */
-    /* or use CSS filters for subtle effects, but direct color change like SVG fill isn't possible. */
-    transition: transform 0.3s ease; /* Add a subtle hover effect */
+    transition: fill 0.3s ease;
 }
 
-.nav .logo img:hover {
-    transform: scale(1.05); /* Make the logo slightly larger on hover */
+.nav .logo svg:hover {
+    fill: #FF6700; /* Nike Orange on hover */
 }
 
 .nav-part-1 ul {
@@ -115,13 +113,13 @@ html, body {
     gap: 30px;
 }
 
-.nav-part-2 i {
+.nav-part-2 > i { /* Directly target icons to avoid styling the search icon */
     font-size: 22px;
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.nav-part-2 i:hover {
+.nav-part-2 > i:hover {
     color: #FF6700;
     transform: scale(1.1);
 }
@@ -129,6 +127,60 @@ html, body {
 .nav-part-2 .menu-icon {
     display: none;
 }
+
+/* --- Animated Search Bar (UPDATED) --- */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.search-bar {
+    width: 0;
+    padding: 10px 0;
+    border: none;
+    outline: none;
+    background-color: #2c2c2c;
+    color: #fff;
+    font-size: 16px;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 50px; /* Fully rounded corners */
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+}
+
+.search-container.active .search-bar {
+    width: 240px;
+    opacity: 1;
+    visibility: visible;
+    /* Add padding to the left for the icon and to the right for text */
+    padding: 10px 20px 10px 45px;
+}
+
+#search-icon {
+    position: absolute; /* Position icon relative to the container */
+    right: 5px; /* Initial position */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    cursor: pointer;
+    color: #f5f5f5;
+    padding: 8px;
+    z-index: 10;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#search-icon:hover {
+    color: #FF6700;
+}
+
+.search-container.active #search-icon {
+    /* Move icon to the left inside the bar when active */
+    color: #FF6700;
+    right: calc(100% - 40px);
+}
+
 
 /* --- Main Content --- */
 .content {
@@ -210,8 +262,8 @@ html, body {
 }
 
 .gif-container {
-    width: 50%;
-    height: auto;
+    width: 60%;
+    height:  70%;
     border-radius: 20px;
     overflow: hidden;
 }
@@ -247,6 +299,8 @@ html, body {
     overflow-x: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    flex-wrap: wrap; /* Allow wrapping for search results */
+    justify-content: center; /* Center items when they wrap */
 }
 
 .product-grid::-webkit-scrollbar {
@@ -260,7 +314,7 @@ html, body {
     border-radius: 20px;
     position: relative;
     padding: 20px;
-    display: flex;
+    display: flex; /* Changed from inline-block for better alignment */
     flex-direction: column;
     justify-content: flex-end;
     text-align: center;
@@ -369,5 +423,8 @@ html, body {
     }
     .product-showcase h2 {
         font-size: 3rem;
+    }
+    .search-container.active .search-bar {
+        width: 180px; /* Adjust for smaller screens */
     }
 }
