@@ -270,7 +270,7 @@ html, body {
 
 .gif-container {
     width: 60%;
-    height:  70%;
+    height: 70%;
     border-radius: 20px;
     overflow: hidden;
 }
@@ -403,11 +403,146 @@ html, body {
     opacity: 0; /* Hide info on hover to show button */
 }
 
-/* --- NEW: Category Explore Section --- */
+/* --- NEW: Collaborations Section --- */
+.collaborations-section {
+    width: 100%;
+    padding: 100px 5%;
+    background-color: #1a1a1a; /* Match main background or choose a contrasting one */
+}
+
+.collaborations-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    color: #fff;
+    animation: fadeInUp 1s ease-out;
+}
+
+.collaboration-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.collaboration-feature {
+    grid-column: span 2; /* Make the feature item span two columns on larger screens */
+    height: 550px; /* Larger height for the feature card */
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s ease;
+}
+
+@media (max-width: 1024px) {
+    .collaboration-feature {
+        grid-column: span 1; /* Revert to 1 column on smaller screens */
+    }
+}
+
+
+.collaboration-feature img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.collaboration-feature:hover img {
+    transform: scale(1.05);
+}
+
+.collaboration-card {
+    height: 450px; /* Standard height for smaller collaboration cards */
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease;
+}
+
+.collaboration-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.collaboration-card:hover img {
+    transform: scale(1.05);
+}
+
+.collaboration-feature::after,
+.collaboration-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0) 60%);
+    z-index: 1;
+}
+
+.collaboration-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    z-index: 2;
+    color: #fff;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s ease;
+    text-align: center;
+}
+
+.collaboration-feature:hover .collaboration-info,
+.collaboration-card:hover .collaboration-info {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.collaboration-info h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem; /* Slightly larger for feature card */
+    margin-bottom: 10px;
+}
+
+.collaboration-card .collaboration-info h3 {
+    font-size: 2.2rem;
+}
+
+.collaboration-info p {
+    margin-bottom: 20px;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.btn.tertiary-btn {
+    background-color: transparent;
+    border: 2px solid #FF6700;
+    color: #FF6700;
+}
+
+.btn.tertiary-btn:hover {
+    background-color: #FF6700;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 103, 0, 0.2);
+}
+
+
+/* --- Category Explore Section --- */
 .category-explore {
     width: 100%;
     padding: 100px 5%;
-    background-color: #1a1a1a;
+    background-color: #111; /* Match product showcase */
 }
 
 .category-explore h2 {
@@ -465,6 +600,7 @@ html, body {
     transform: translateY(20px);
     opacity: 0;
     transition: all 0.5s ease;
+    text-align: center;
 }
 
 .category-card:hover .category-info {
@@ -493,7 +629,7 @@ html, body {
     color: #1a1a1a;
 }
 
-/* --- NEW: Footer Section --- */
+/* --- Footer Section --- */
 .site-footer {
     background-color: #111;
     padding: 80px 5% 20px;
@@ -580,6 +716,13 @@ html, body {
         flex: 0 0 250px;
         height: 360px;
     }
+    .collaboration-feature {
+        grid-column: span 1; /* Revert to 1 column on smaller screens for consistency */
+        height: 450px; /* Match other cards on smaller screens */
+    }
+    .collaboration-info h3 {
+        font-size: 2.2rem; /* Adjust font size for smaller screens */
+    }
 }
 
 @media (max-width: 768px) {
@@ -607,20 +750,20 @@ html, body {
     .content-left h1 {
         font-size: 18vw;
     }
-     .content-left p {
+    .content-left p {
         width: 100%;
     }
     .gif-container {
         height: 300px;
         width: 100%;
     }
-    .product-showcase h2, .category-explore h2 {
+    .product-showcase h2, .category-explore h2, .collaborations-section h2 {
         font-size: 3rem;
     }
     .search-container.active .search-bar {
         width: 180px; /* Adjust for smaller screens */
     }
-     .footer-container {
+    .footer-container {
         grid-template-columns: 1fr;
         text-align: center;
     }
@@ -631,7 +774,50 @@ html, body {
     .social-icons {
         text-align: center;
     }
-     .social-icons a {
+    .social-icons a {
         margin: 0 10px;
+    }
+
+    .collaboration-feature, .collaboration-card {
+        height: 380px; /* Further adjust height for very small screens */
+    }
+    .collaboration-info {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+    .collaboration-info h3 {
+        font-size: 1.8rem;
+    }
+    .collaboration-info p {
+        font-size: 0.9rem;
+    }
+    .btn.secondary-btn, .btn.tertiary-btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-showcase, .collaborations-section, .category-explore {
+        padding: 60px 3%; /* Reduce padding on very small screens */
+    }
+    .product-showcase h2, .collaborations-section h2, .category-explore h2 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+    .collaboration-feature, .collaboration-card, .category-card {
+        min-width: 280px; /* Ensure cards don't get too small */
+    }
+    .collaboration-feature {
+        height: 350px;
+    }
+    .collaboration-card, .category-card {
+        height: 300px;
+    }
+    .collaboration-info h3 {
+        font-size: 1.5rem;
+    }
+    .collaboration-info p {
+        font-size: 0.85rem;
+        margin-bottom: 15px;
     }
 }
