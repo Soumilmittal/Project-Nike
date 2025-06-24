@@ -14,13 +14,20 @@
 
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+
     <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
-    <div class="page-wrapper">
-        <section class="main-section">
+    <div id="preloader">
+        <img src="nike-logo-0.png" alt="Nike Logo" class="preloader-logo">
+        <p class="preloader-tagline">Just Do It</p>
+    </div>
+
+    <div class="page-wrapper" data-scroll-container>
+        <section class="main-section" data-scroll-section>
             <nav class="nav">
                 <div class="nav-part-1">
                     <div class="logo">
@@ -40,7 +47,10 @@
                         <input type="text" id="search-bar" class="search-bar" placeholder="Search products...">
                         <i class="ri-search-line" id="search-icon"></i>
                     </div>
-                    <i class="ri-shopping-cart-line"></i>
+                    <div class="cart-icon" onclick="toggleCart()">
+                        <i class="ri-shopping-cart-line"></i>
+                        <span id="cart-item-count">0</span>
+                    </div>
                     <i class="ri-menu-line menu-icon"></i>
                 </div>
             </nav>
@@ -61,86 +71,87 @@
             </div>
         </section>
 
-        <section class="product-showcase">
+        <section class="product-showcase" data-scroll-section>
             <h2>Our Latest Drops</h2>
             <div class="product-grid">
-                <div class="product">
+                <div class="product" data-product-id="1">
                     <div class="product-overlay"></div>
-                    <img src="green_shoes-removebg-preview.png" alt="product">
+                    <img src="green_shoes-removebg-preview.png" alt="Nike Air Max 1">
                     <div class="product-info">
                         <h4>Nike Air Max 1</h4>
                         <p class="category">Men's shoes</p>
                         <p class="price">$220</p>
                     </div>
-                    <button class="add-to-cart-btn">Add to Cart <i class="ri-shopping-bag-line"></i></button>
+                    <button class="add-to-cart-btn" data-id="1">Add to Cart <i class="ri-shopping-bag-line"></i></button>
                 </div>
-                <div class="product">
+                <div class="product" data-product-id="2">
                     <div class="product-overlay"></div>
-                    <img src="Nike_Air_Force_1__07_LV8_Men_s_-_Navy-removebg-preview.png" alt="product">
+                    <img src="Nike_Air_Force_1__07_LV8_Men_s_-_Navy-removebg-preview.png" alt="Nike Air Peg 2k5">
                     <div class="product-info">
                         <h4>Nike Air Peg 2k5</h4>
                         <p class="category">Men's shoes</p>
                         <p class="price">$250</p>
                     </div>
-                    <button class="add-to-cart-btn">Add to Cart <i class="ri-shopping-bag-line"></i></button>
+                    <button class="add-to-cart-btn" data-id="2">Add to Cart <i class="ri-shopping-bag-line"></i></button>
                 </div>
-                <div class="product">
+                <div class="product" data-product-id="3">
                     <div class="product-overlay"></div>
-                    <img src="air-max-1-lx-shoes-removebg-preview.png" alt="product">
+                    <img src="air-max-1-lx-shoes-removebg-preview.png" alt="Nike Lunar Roam">
                     <div class="product-info">
                         <h4>Nike Lunar Roam</h4>
                         <p class="category">Men's shoes</p>
                         <p class="price">$260</p>
                     </div>
-                    <button class="add-to-cart-btn">Add to Cart <i class="ri-shopping-bag-line"></i></button>
+                    <button class="add-to-cart-btn" data-id="3">Add to Cart <i class="ri-shopping-bag-line"></i></button>
                 </div>
-                <div class="product">
+                <div class="product" data-product-id="4">
                     <div class="product-overlay"></div>
-                    <img src="air-peg-2k5-shoes-removebg-preview.png" alt="product">
+                    <img src="air-peg-2k5-shoes-removebg-preview.png" alt="Nike Nocta Glide">
                     <div class="product-info">
                         <h4>Nike Nocta Glide</h4>
                         <p class="category">Men's shoes</p>
                         <p class="price">$300</p>
                     </div>
-                    <button class="add-to-cart-btn">Add to Cart <i class="ri-shopping-bag-line"></i></button>
+                    <button class="add-to-cart-btn" data-id="4">Add to Cart <i class="ri-shopping-bag-line"></i></button>
                 </div>
-                <div class="product">
+                <div class="product" data-product-id="5">
                     <div class="product-overlay"></div>
-                    <img src="lunar-roam-shoes-removebg-preview.png" alt="product">
+                    <img src="lunar-roam-shoes-removebg-preview.png" alt="Nike Terminator">
                     <div class="product-info">
                         <h4>Nike Terminator</h4>
                         <p class="category">Men's shoes</p>
+                        <p class="price">$280</p>
                     </div>
-                    <button class="add-to-cart-btn">Add to Cart <i class="ri-shopping-bag-line"></i></button>
+                    <button class="add-to-cart-btn" data-id="5">Add to Cart <i class="ri-shopping-bag-line"></i></button>
                 </div>
-                <div class="product">
+                <div class="product" data-product-id="6">
                     <div class="product-overlay"></div>
-                    <img src="Air_Jordan_Mens_5_Retro_-_Grape-removebg-preview.png" alt="product">
+                    <img src="Air_Jordan_Mens_5_Retro_-_Grape-removebg-preview.png" alt="Nike Dunk Low (Grape)">
                     <div class="product-info">
                         <h4>Nike Dunk Low</h4>
                         <p class="category">Men's shoes</p>
                         <p class="price">$190</p>
                     </div>
-                    <button class="add-to-cart-btn">Add to Cart <i class="ri-shopping-bag-line"></i></button>
+                    <button class="add-to-cart-btn" data-id="6">Add to Cart <i class="ri-shopping-bag-line"></i></button>
                 </div>
-                <div class="product">
+                <div class="product" data-product-id="7">
                     <div class="product-overlay"></div>
-                    <img src="Nike_Womens_Dunk_High_-_Pecan-removebg-preview.png" alt="product">
+                    <img src="Nike_Womens_Dunk_High_-_Pecan-removebg-preview.png" alt="Nike Dunk High (Pecan)">
                     <div class="product-info">
-                        <h4>Nike Dunk Low</h4>
-                        <p class="category">Men's shoes</p>
+                        <h4>Nike Dunk High</h4>
+                        <p class="category">Women's shoes</p>
                         <p class="price">$190</p>
                     </div>
-                    <button class="add-to-cart-btn">Add to Cart <i class="ri-shopping-bag-line"></i></button>
+                    <button class="add-to-cart-btn" data-id="7">Add to Cart <i class="ri-shopping-bag-line"></i></button>
                 </div>
             </div>
         </section>
 
-        <section class="collaborations-section">
+        <section class="collaborations-section" data-scroll-section>
             <h2>NIKE x YOU: The Collaborations</h2>
             <div class="collaboration-grid">
                 <div class="collaboration-feature">
-                    <img src="Travis Scott Nike Shoe Poster Design   - Christo….jpeg"
+                    <img src="Travis Scott Nike Shoe Poster Design   - Christo….jpeg"
                         alt="Nike x Travis Scott Collaboration">
                     <div class="collaboration-info">
                         <h3>Nike x Travis Scott</h3>
@@ -168,7 +179,7 @@
                 </div>
             </div>
         </section>
-        <section class="category-explore">
+        <section class="category-explore" data-scroll-section>
             <h2>Explore By Category</h2>
             <div class="category-grid">
                 <div class="category-card">
@@ -201,7 +212,7 @@
             </div>
         </section>
 
-        <footer class="site-footer">
+        <footer class="site-footer" data-scroll-section>
             <div class="footer-container">
                 <div class="footer-column footer-logo-section">
                     <div class="logo">
@@ -253,18 +264,56 @@
         </footer>
     </div>
 
+    <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Bag</h2> <button class="close-cart" onclick="toggleCart()">X</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <p class="empty-cart-message">Your bag is empty.</p>
+        </div>
+        <div class="cart-summary">
+            <p>Total: $<span id="cart-total">0.00</span></p>
+            <button class="checkout-button">Checkout</button>
+            <button class="clear-cart" onclick="clearCart()">Clear Bag</button> </div>
+    </div>
 
+    <div class="overlay" onclick="toggleCart()"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Preloader Logic
+            const preloader = document.getElementById('preloader');
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    preloader.style.visibility = 'hidden';
+                    preloader.style.pointerEvents = 'none'; // Ensure it's not clickable
+                    document.body.style.overflow = ''; // Restore body scroll
+                }, 1000); // Fade out after 1 second
+            });
+            document.body.style.overflow = 'hidden'; // Hide body scroll until preloader fades
+
+            // Locomotive Scroll Initialization
+            const scroll = new LocomotiveScroll({
+                el: document.querySelector('[data-scroll-container]'),
+                smooth: true,
+                // You can add more options here, e.g., for mobile responsiveness
+                // tablet: { smooth: true },
+                // smartphone: { smooth: true }
+            });
+
+            // Initial search bar and product filtering logic
             const searchIcon = document.getElementById('search-icon');
             const searchContainer = document.querySelector('.search-container');
             const searchBar = document.getElementById('search-bar');
+            // Select all products directly as they are already in the HTML
             const products = document.querySelectorAll('.product-grid .product');
 
             // --- Toggle search bar visibility ---
             searchIcon.addEventListener('click', function (event) {
-                event.stopPropagation(); // Prevents the click from reaching the document
+                event.stopPropagation();
                 searchContainer.classList.toggle('active');
                 if (searchContainer.classList.contains('active')) {
                     searchBar.focus();
@@ -284,14 +333,156 @@
 
                 products.forEach(function (product) {
                     const title = product.querySelector('h4').textContent.toLowerCase();
-                    // If the product title includes the search term, show it, otherwise hide it
                     if (title.includes(searchTerm)) {
-                        product.style.display = 'flex';
+                        product.style.display = 'flex'; // Use flex display as defined in CSS
                     } else {
                         product.style.display = 'none';
                     }
                 });
+                scroll.update(); // Update Locomotive Scroll after content changes
             });
+
+            // --- Add to Cart Functionality ---
+            const cartSidebar = document.getElementById('cart-sidebar');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalSpan = document.getElementById('cart-total');
+            const cartItemCountSpan = document.getElementById('cart-item-count');
+            const emptyCartMessage = document.querySelector('.empty-cart-message');
+
+            let cart = JSON.parse(localStorage.getItem('nikeShoppingCart')) || [];
+
+            // Define product data directly from the HTML for consistency and simplicity
+            // In a real app, this would be fetched from a backend
+            const productsData = [];
+            products.forEach(productElement => {
+                const id = parseInt(productElement.dataset.productId);
+                const name = productElement.querySelector('h4').textContent;
+                const priceText = productElement.querySelector('.price').textContent;
+                const price = parseFloat(priceText.replace('$', ''));
+                const image = productElement.querySelector('img').src;
+                productsData.push({ id, name, price, image });
+            });
+
+
+            function saveCart() {
+                localStorage.setItem('nikeShoppingCart', JSON.stringify(cart));
+                updateCartDisplay();
+            }
+
+            function getProductById(id) {
+                return productsData.find(product => product.id === id);
+            }
+
+            function updateCartDisplay() {
+                cartItemsContainer.innerHTML = ''; // Clear current cart display
+                let total = 0;
+                let itemCount = 0;
+
+                if (cart.length === 0) {
+                    emptyCartMessage.style.display = 'block';
+                } else {
+                    emptyCartMessage.style.display = 'none';
+                    cart.forEach(item => {
+                        const product = getProductById(item.id);
+                        if (product) {
+                            const cartItemElement = document.createElement('div');
+                            cartItemElement.classList.add('cart-item');
+                            cartItemElement.innerHTML = `
+                                <img src="${product.image}" alt="${product.name}" class="cart-item-image">
+                                <div class="cart-item-details">
+                                    <h4>${product.name}</h4>
+                                    <p>$${product.price.toFixed(2)}</p>
+                                </div>
+                                <div class="cart-item-quantity">
+                                    <button data-id="${product.id}" class="decrease-quantity">-</button>
+                                    <span>${item.quantity}</span>
+                                    <button data-id="${product.id}" class="increase-quantity">+</button>
+                                </div>
+                                <button data-id="${product.id}" class="remove-item-btn">Remove</button>
+                            `;
+                            cartItemsContainer.appendChild(cartItemElement);
+
+                            total += product.price * item.quantity;
+                            itemCount += item.quantity;
+                        }
+                    });
+                }
+
+                cartTotalSpan.textContent = total.toFixed(2);
+                cartItemCountSpan.textContent = itemCount;
+                scroll.update(); // Update Locomotive Scroll after cart content changes
+            }
+
+            function addProductToCart(productId) {
+                const existingItemIndex = cart.findIndex(item => item.id === productId);
+
+                if (existingItemIndex > -1) {
+                    cart[existingItemIndex].quantity++;
+                } else {
+                    cart.push({ id: productId, quantity: 1 });
+                }
+                saveCart();
+            }
+
+            function changeQuantity(productId, change) {
+                const itemIndex = cart.findIndex(item => item.id === productId);
+
+                if (itemIndex > -1) {
+                    cart[itemIndex].quantity += change;
+                    if (cart[itemIndex].quantity <= 0) {
+                        cart.splice(itemIndex, 1); // Remove if quantity is 0 or less
+                    }
+                    saveCart();
+                }
+            }
+
+            function removeItemFromCart(productId) {
+                cart = cart.filter(item => item.id !== productId);
+                saveCart();
+            }
+
+            // Global functions for HTML onclick attributes
+            window.clearCart = function () {
+                cart = [];
+                saveCart();
+                alert('Your Nike bag has been cleared!');
+                toggleCart();
+            }
+
+            window.toggleCart = function () {
+                cartSidebar.classList.toggle('open');
+                document.body.classList.toggle('cart-open');
+                const overlay = document.querySelector('.overlay');
+                if (overlay) overlay.classList.toggle('active');
+            }
+
+            // Add to Cart button listener
+            document.querySelector('.product-showcase').addEventListener('click', (event) => {
+                if (event.target.classList.contains('add-to-cart-btn')) {
+                    const productId = parseInt(event.target.dataset.id);
+                    addProductToCart(productId);
+                    console.log(`${getProductById(productId).name} added to bag!`); // Console log instead of alert
+                    toggleCart(); // Open cart after adding
+                }
+            });
+
+            // Cart item quantity and remove button listeners (event delegation)
+            cartItemsContainer.addEventListener('click', (event) => {
+                const target = event.target;
+                const productId = parseInt(target.dataset.id);
+
+                if (target.classList.contains('increase-quantity')) {
+                    changeQuantity(productId, 1);
+                } else if (target.classList.contains('decrease-quantity')) {
+                    changeQuantity(productId, -1);
+                } else if (target.classList.contains('remove-item-btn')) {
+                    removeItemFromCart(productId);
+                    console.log('Item removed from bag!'); // Console log instead of alert
+                }
+            });
+
+            // Initial display update for cart
+            updateCartDisplay();
         });
     </script>
 </body>
