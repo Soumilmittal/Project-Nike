@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Limited Edition - The Drop</title>
+
+    <!-- Google Fonts: Poppins & Bebas Neue -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Remix Icon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+
+    <!-- ======================= HEADER ======================= -->
+    <header class="site-header">
+        <nav class="nav">
+            <div class="logo">
+                <a href="index.html"><img src="nike-logo-0.png" alt="Nike Logo"></a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="#footwear">Footwear</a>
+                <a href="#apparel">Apparel</a>
+                <a href="#accessories">Accessories</a>
+            </div>
+            <div class="nav-icons">
+                <i class="ri-search-line"></i>
+                <i class="ri-shopping-cart-line"></i>
+                <i class="ri-menu-line menu-icon"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="shop-main">
+        <!-- ====================================================== -->
+        <!-- ==================== HERO SECTION ==================== -->
+        <!-- ====================================================== -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h5 class="subtitle">THE VAULT IS OPEN</h5>
+                <h1 class="main-title">THE 'AURORA' COLLECTION</h1>
+                <p class="hero-description">
+                    Inspired by the ethereal glow of the northern lights. This collection is a fusion of cutting-edge tech and celestial design. Available for a limited time only.
+                </p>
+                <div class="countdown-timer" id="countdown-timer">
+                    <div class="time-block">
+                        <span id="days">00</span>
+                        <small>Days</small>
+                    </div>
+                    <div class="time-block">
+                        <span id="hours">00</span>
+                        <small>Hours</small>
+                    </div>
+                    <div class="time-block">
+                        <span id="minutes">00</span>
+                        <small>Minutes</small>
+                    </div>
+                    <div class="time-block">
+                        <span id="seconds">00</span>
+                        <small>Seconds</small>
+                    </div>
+                </div>
+                <a href="#product-showcase" class="btn hero-btn">Explore The Drop</a>
+            </div>
+        </section>
+
+        <!-- ====================================================== -->
+        <!-- ================ PRODUCT SHOWCASE ==================== -->
+        <!-- ====================================================== -->
+        <section class="product-showcase" id="product-showcase">
+            <div class="container">
+                <div class="section-header">
+                    <h2>The Full Collection</h2>
+                    <div class="filter-buttons" id="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="footwear">Footwear</button>
+                        <button class="filter-btn" data-filter="apparel">Apparel</button>
+                        <button class="filter-btn" data-filter="accessories">Accessories</button>
+                    </div>
+                </div>
+
+                <div class="product-grid" id="product-grid">
+                    <!-- Footwear -->
+                    <div class="product-card" data-category="footwear">
+                        <div class="product-image">
+                            <img src="Air Glow 1.jpeg" alt="Nike Air Glow 1">
+                            <span class="product-tag">Limited</span>
+                        </div>
+                        <div class="product-info">
+                            <h4>Nike Air Glow 1</h4>
+                            <p class="category">Men's Shoes</p>
+                            <p class="price">$280</p>
+                        </div>
+                    </div>
+                    <div class="product-card" data-category="footwear">
+                        <div class="product-image">
+                            <img src="Nova Run.jpeg" alt="Nike Nova Run">
+                        </div>
+                        <div class="product-info">
+                            <h4>Nike Nova Run</h4>
+                            <p class="category">Women's Shoes</p>
+                            <p class="price">$250</p>
+                        </div>
+                    </div>
+
+                    <!-- Apparel -->
+                    <div class="product-card" data-category="apparel">
+                        <div class="product-image">
+                            <img src="Tech Jacket.jpeg" alt="Aurora Tech Jacket">
+                        </div>
+                        <div class="product-info">
+                            <h4>Aurora Tech Jacket</h4>
+                            <p class="category">Men's Apparel</p>
+                            <p class="price">$450</p>
+                        </div>
+                    </div>
+                    <div class="product-card" data-category="apparel">
+                        <div class="product-image">
+                            <img src="Flow Tights.jpeg" alt="Flow Tights">
+                             <span class="product-tag">Reflective</span>
+                        </div>
+                        <div class="product-info">
+                            <h4>Aurora Flow Tights</h4>
+                            <p class="category">Women's Apparel</p>
+                            <p class="price">$120</p>
+                        </div>
+                    </div>
+
+                    <!-- Accessories -->
+                    <div class="product-card" data-category="accessories">
+                        <div class="product-image">
+                            <img src="vision pro.jpeg" alt="Vision Pro Glasses">
+                        </div>
+                        <div class="product-info">
+                            <h4>Aurora Vision Pro</h4>
+                            <p class="category">Unisex Accessories</p>
+                            <p class="price">$180</p>
+                        </div>
+                    </div>
+                     <div class="product-card" data-category="accessories">
+                        <div class="product-image">
+                            <img src="Aero Cap.jpeg" alt="Aero Cap">
+                        </div>
+                        <div class="product-info">
+                            <h4>Aurora Aero Cap</h4>
+                            <p class="category">Unisex Accessories</p>
+                            <p class="price">$60</p>
+                        </div>
+                    </div>
+                     <div class="product-card" data-category="footwear">
+                        <div class="product-image">
+                            <img src="ReactX.jpeg" alt="React X">
+                        </div>
+                        <div class="product-info">
+                            <h4>React X Aurora</h4>
+                            <p class="category">Men's Shoes</p>
+                            <p class="price">$310</p>
+                        </div>
+                    </div>
+                     <div class="product-card" data-category="apparel">
+                        <div class="product-image">
+                            <img src="tech flece jacket.jpeg" alt="Tech Fleece Hoodie">
+                        </div>
+                        <div class="product-info">
+                            <h4>Aurora Tech Fleece</h4>
+                            <p class="category">Men's Apparel</p>
+                            <p class="price">$190</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================== -->
+        <!-- ================= SPOTLIGHT SECTION ================== -->
+        <!-- ====================================================== -->
+        <section class="spotlight-section">
+            <div class="container spotlight-container">
+                <div class="spotlight-image">
+                    <img src="vision pro.jpeg" alt="Nike Air Glow 1 Spotlight">
+                </div>
+                <div class="spotlight-content">
+                    <h5 class="subtitle">Collection Spotlight</h5>
+                    <h2>The Nike Air Glow 1</h2>
+                    <p>The centerpiece of the Aurora Collection. Featuring a revolutionary phosphorescent sole that absorbs light and glows in the dark. The upper mesh is woven with reflective fibers, creating a celestial pattern that shifts with every movement. This isn't just a shoe; it's a statement.</p>
+                    <ul class="features-list">
+                        <li><i class="ri-check-double-line"></i> Glow-in-the-dark React foam sole.</li>
+                        <li><i class="ri-check-double-line"></i> 3M reflective fiber-woven upper.</li>
+                        <li><i class="ri-check-double-line"></i> Each pair individually numbered.</li>
+                        <li><i class="ri-check-double-line"></i> Comes in exclusive collector's packaging.</li>
+                    </ul>
+                    <button class="btn">View Details</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ====================================================== -->
+    <!-- ======================= FOOTER ======================= -->
+    <!-- ====================================================== -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">Limited Editions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Order Tracking</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Join Our Newsletter</h4>
+                <p>Be the first to know about new collections and exclusive offers.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit"><i class="ri-arrow-right-line"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Nike, Inc. All Rights Reserved.</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                <a href="#" aria-label="Twitter"><i class="ri-twitter-fill"></i></a>
+                <a href="#" aria-label="Instagram"><i class="ri-instagram-fill"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript File -->
+    <script src="shop.js"></script>
+
+</body>
+</html>

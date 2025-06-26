@@ -185,6 +185,17 @@ body.has-scroll-smooth {
     width: 100%;
 }
 
+.nav-part-1 ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-part-1 ul li a:hover {
+    color: #FF6700;
+    text-decoration: none;
+}
+
 .nav-part-2 {
     display: flex;
     align-items: center;
@@ -326,6 +337,20 @@ body.has-scroll-smooth {
     color: #FF6700;
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(255, 103, 0, 0.2);
+}
+
+/* Links inside .btn buttons: white, no underline, inherit button style */
+.btn a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.btn:hover a {
+    color: #FF6700;
+    text-decoration: none;
 }
 
 /* --- Right Content (GIF Display) --- */
