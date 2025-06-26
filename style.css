@@ -1223,3 +1223,36 @@ body.has-scroll-smooth {
         margin-bottom: 15px;
     }
 }
+
+/* --- Enhanced Scroll-In Animation Addon --- */
+@keyframes scrollIn {
+    0% {
+        opacity: 0;
+        transform: translateY(80px) scale(0.94);
+        filter: blur(8px);
+    }
+    60% {
+        opacity: 0.7;
+        filter: blur(2px);
+        transform: translateY(10px) scale(1.01);
+    }
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0) scale(1);
+    }
+}
+
+.scroll-in {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    animation: scrollIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+[data-scroll-animate] {
+    opacity: 0;
+    transform: translateY(80px) scale(0.94);
+    filter: blur(8px);
+    transition: opacity 0.4s, transform 0.4s, filter 0.4s;
+}
