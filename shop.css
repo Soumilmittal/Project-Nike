@@ -83,7 +83,7 @@ ul {
     left: 0;
     z-index: 100;
     padding: 20px 5%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
 }
 
 .nav {
@@ -148,7 +148,7 @@ ul {
 /* ====================================================== */
 .hero-section {
     height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -241,7 +241,8 @@ ul {
     transition: all 0.3s ease;
 }
 
-.filter-btn:hover, .filter-btn.active {
+.filter-btn:hover,
+.filter-btn.active {
     background-color: var(--nike-orange);
     border-color: var(--nike-orange);
     color: #fff;
@@ -269,7 +270,7 @@ ul {
 
 .product-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .product-image {
@@ -469,31 +470,79 @@ ul {
 /* =================== ANIMATIONS ======================= */
 /* ====================================================== */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes popIn {
-    from { transform: scale(0.9); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 /* ====================================================== */
 /* ================== RESPONSIVE DESIGN ================= */
 /* ====================================================== */
 @media (max-width: 992px) {
-    .main-title { font-size: 4.5rem; }
-    .nav-links { display: none; } /* Hide for now, can be implemented as a mobile menu */
-    .menu-icon { display: block; }
-    .spotlight-container { flex-direction: column; text-align: center; }
+    .main-title {
+        font-size: 4.5rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    /* Hide for now, can be implemented as a mobile menu */
+    .menu-icon {
+        display: block;
+    }
+
+    .spotlight-container {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 @media (max-width: 768px) {
-    .main-title { font-size: 3.5rem; }
-    .hero-description { font-size: 16px; }
-    .countdown-timer { gap: 10px; }
-    .time-block { padding: 10px 15px; }
-    .time-block span { font-size: 2rem; }
-    .section-header h2 { font-size: 3rem; }
-    .footer-bottom { flex-direction: column; gap: 20px; }
+    .main-title {
+        font-size: 3.5rem;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .countdown-timer {
+        gap: 10px;
+    }
+
+    .time-block {
+        padding: 10px 15px;
+    }
+
+    .time-block span {
+        font-size: 2rem;
+    }
+
+    .section-header h2 {
+        font-size: 3rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+    }
 }

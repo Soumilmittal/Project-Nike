@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
             productCards.forEach(card => {
                 const category = card.dataset.category;
                 const shouldShow = filter === 'all' || filter === category;
-                
+
                 // Add a small delay for animation effect
                 card.style.animation = 'none'; // Reset animation
                 void card.offsetWidth; // Trigger reflow
