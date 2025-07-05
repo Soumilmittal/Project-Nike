@@ -306,7 +306,6 @@
             const scroll = new LocomotiveScroll({
                 el: document.querySelector('[data-scroll-container]'),
                 smooth: true,
-         
             });
 
             // Initial search bar and product filtering logic
@@ -356,7 +355,6 @@
 
             let cart = JSON.parse(localStorage.getItem('nikeShoppingCart')) || [];
 
-            // Define product data directly from the HTML for consistency and simplicity
             // In a real app, this would be fetched from a backend
             const productsData = [];
             products.forEach(productElement => {
