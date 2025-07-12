@@ -27,7 +27,7 @@ body {
     align-items: center;
     z-index: 9999;
     /* Ensure it's on top of everything */
-    /* transition: opacity 2s ease-out; */
+    transition: opacity 2s ease-out;
     /* Smooth fade-out effect */
 }
 
@@ -471,29 +471,23 @@ body.has-scroll-smooth {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* Product Image Transition */
 .product img {
-    /* transition: transform 0.5s ease; */
     width: 110%;
     position: absolute;
     top: 45%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-25deg);
-    /* Keep initial state */
-    transform-origin: center;
     object-fit: contain;
+    transition: transform 0.5s ease, filter 0.5s ease;
 }
 
-/* On product hover */
 .product:hover img {
-    /* transform: rotate(0deg) scale(1.15); */
-    /* GSAP handles this now */
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.1);
 }
 
-/* Product Info Fade */
 .product-info {
     z-index: 2;
-    /* transition: opacity 0.4s ease; */
+    transition: opacity 0.4s ease;
 }
 
 .product h4 {
@@ -517,7 +511,6 @@ body.has-scroll-smooth {
     color: #FF6700;
 }
 
-/* Add to Cart Button Slide-up */
 .add-to-cart-btn {
     background-color: #FF6700;
     color: #fff;
@@ -530,14 +523,12 @@ body.has-scroll-smooth {
     cursor: pointer;
     position: absolute;
     bottom: -60px;
-    /* Keep initial state */
+    /* Initially hidden */
     left: 50%;
     transform: translateX(-50%);
-    /* transition: all 0.4s ease; */
-    /* GSAP handles this now */
+    transition: all 0.4s ease;
     z-index: 5;
     opacity: 0;
-    /* Keep initial state */
     width: 80%;
     display: flex;
     /* For icon alignment */
@@ -547,27 +538,14 @@ body.has-scroll-smooth {
 }
 
 .product:hover .add-to-cart-btn {
-    /* bottom: 20px; */
-    /* GSAP handles this now */
-    /* opacity: 1;    */
-    /* GSAP handles this now */
+    bottom: 20px;
+    /* Slide in on hover */
+    opacity: 1;
 }
 
 .product:hover .product-info {
-    /* opacity: 0; */
-    /* GSAP handles this now */
-}
-
-.product-overlay {
     opacity: 0;
-    /* Keep initial state */
-    /* transition: opacity 0.3s ease; */
-    /* GSAP handles this now */
-}
-
-.product:hover .product-overlay {
-    /* opacity: 1; */
-    /* GSAP handles this now */
+    /* Hide info on hover to show button */
 }
 
 /* --- NEW: Collaborations Section --- */
@@ -895,8 +873,7 @@ body.has-scroll-smooth {
     /* Ensure it's on top of everything */
     opacity: 1;
     visibility: visible;
-    /* transition: opacity 1s ease-out, visibility 1s; */
-    /* GSAP handles this now */
+    transition: opacity 1s ease-out, visibility 1s ease-out;
 }
 
 .preloader-logo {
