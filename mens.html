@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NIKE - Men's Collection</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+
+    <link rel="stylesheet" href="mens.css">
+
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="nike-logo-container">
+            <img src="nike-logo-0.png" alt="Nike Logo" class="preloader-nike-logo">
+            <div class="loading-bar-border">
+                <div class="loading-bar-fill"></div>
+            </div>
+            <div class="loading-text">Fueling Up Your Experience...</div>
+        </div>
+    </div>
+
+    <div class="page-wrapper" data-scroll-container>
+
+        <nav class="nav">
+            <div class="nav-part-1">
+                <div class="logo">
+                    <img src="nike-logo-0.png" alt="Nike Logo">
+                </div>
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="men.html" class="nav-link active">Men</a></li>
+                    <li><a href="#" class="nav-link" data-target="women-page">Women</a></li>
+                    <li><a href="#" class="nav-link" data-target="collection-page">Collection</a></li>
+                    <li><a href="#" class="nav-link" data-target="contact-page">Contact</a></li>
+                </ul>
+            </div>
+            <div class="nav-part-2">
+                <div class="search-container">
+                    <input type="text" id="search-bar" class="search-bar" placeholder="Search products...">
+                    <i class="ri-search-line" id="search-icon"></i>
+                </div>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="ri-shopping-cart-line"></i>
+                    <span id="cart-item-count">0</span>
+                </div>
+                <i class="ri-menu-line menu-icon"></i>
+            </div>
+        </nav>
+
+        <div id="men-page" class="content-page active-page" data-scroll-section>
+            <section class="men-hero-section">
+                <div class="men-hero-content">
+                    <h1>MEN'S COLLECTION</h1>
+                    <p>
+                        Gear up for greatness. Discover the latest in men's footwear, apparel, and accessories.
+                    </p>
+                    <button type="button" class="btn">Shop Men's Now</button>
+                </div>
+            </section>
+
+            <section class="men-categories-section">
+                <h2>Shop Men's By Category</h2>
+                <div class="men-category-grid">
+                    <div class="men-category-card">
+                        <img src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_906,c_limit/e2049e9c-102c-473d-9d29-a1b6c07d3c26/nike-just-do-it.jpg" alt="Men's Shoes">
+                        <div class="men-category-info">
+                            <h3>Shoes</h3>
+                            <button type="button" class="btn secondary-btn">View All</button>
+                        </div>
+                    </div>
+                    <div class="men-category-card">
+                        <img src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_906,c_limit/d2757279-d3e3-4d43-8e7c-a4593f6b7e0d/sacai-x-nike.jpg" alt="Men's Apparel">
+                        <div class="men-category-info">
+                            <h3>Apparel</h3>
+                            <button type="button" class="btn secondary-btn">View All</button>
+                        </div>
+                    </div>
+                    <div class="men-category-card">
+                        <img src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_906,c_limit/6fdd45f7-f13c-4467-933e-e2b2c3c737d2/the-story-of-jordan-x-travis-scott.jpg" alt="Men's Accessories">
+                        <div class="men-category-info">
+                            <h3>Accessories</h3>
+                            <button type="button" class="btn secondary-btn">View All</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="men-featured-products-section product-showcase">
+                <h2>Featured For Men</h2>
+                <div class="product-grid">
+                    <div class="product" data-product-id="8">
+                        <div class="product-overlay"></div>
+                        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/6059e661-807e-4091-8869-7756f50f2425/air-force-1-07-shoes-NVX00q.png" alt="Nike Air Force 1 '07">
+                        <div class="product-info">
+                            <h4>Nike Air Force 1 '07</h4>
+                            <p class="category">Men's Shoes</p>
+                            <p class="price">$110</p>
+                        </div>
+                        <button type="button" class="add-to-cart-btn" data-id="8">Add to Cart <i class="ri-shopping-bag-line"></i></button>
+                    </div>
+                    <div class="product" data-product-id="9">
+                        <div class="product-overlay"></div>
+                        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/e705b76f-230c-43a0-be95-7cf05d513d7d/dunk-low-shoes.png" alt="Nike Dunk Low">
+                        <div class="product-info">
+                            <h4>Nike Dunk Low</h4>
+                            <p class="category">Men's Shoes</p>
+                            <p class="price">$120</p>
+                        </div>
+                        <button type="button" class="add-to-cart-btn" data-id="9">Add to Cart <i class="ri-shopping-bag-line"></i></button>
+                    </div>
+                    <div class="product" data-product-id="10">
+                        <div class="product-overlay"></div>
+                        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/8c644485-6101-4470-9831-255d65451a4a/sportswear-tech-fleece-full-zip-hoodie-hXb1rF.png" alt="Nike Tech Fleece Hoodie">
+                        <div class="product-info">
+                            <h4>Tech Fleece Hoodie</h4>
+                            <p class="category">Men's Apparel</p>
+                            <p class="price">$100</p>
+                        </div>
+                        <button type="button" class="add-to-cart-btn" data-id="10">Add to Cart <i class="ri-shopping-bag-line"></i></button>
+                    </div>
+                     <div class="product" data-product-id="11">
+                        <div class="product-overlay"></div>
+                        <img src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/a5416298-bb0a-42fc-a38f-a94f6e2467d1/sportswear-club-fleece-crew-neck-sweatshirt-pB58lH.png" alt="Nike Sportswear Club Fleece">
+                        <div class="product-info">
+                            <h4>Club Fleece Crew</h4>
+                            <p class="category">Men's Apparel</p>
+                            <p class="price">$60</p>
+                        </div>
+                        <button type="button" class="add-to-cart-btn" data-id="11">Add to Cart <i class="ri-shopping-bag-line"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="men-shop-by-sport-section">
+                <h2>Shop Men's By Sport</h2>
+                <div class="sport-grid">
+                    <div class="sport-card">
+                        <img src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_906,c_limit/d2757279-d3e3-4d43-8e7c-a4593f6b7e0d/sacai-x-nike.jpg" alt="Running">
+                        <div class="sport-info">
+                            <h3>Running</h3>
+                            <button type="button" class="btn tertiary-btn">Explore</button>
+                        </div>
+                    </div>
+                    <div class="sport-card">
+                        <img src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_906,c_limit/6fdd45f7-f13c-4467-933e-e2b2c3c737d2/the-story-of-jordan-x-travis-scott.jpg" alt="Basketball">
+                        <div class="sport-info">
+                            <h3>Basketball</h3>
+                            <button type="button" class="btn tertiary-btn">Explore</button>
+                        </div>
+                    </div>
+                    <div class="sport-card">
+                        <img src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_906,c_limit/e2049e9c-102c-473d-9d29-a1b6c07d3c26/nike-just-do-it.jpg" alt="Training">
+                        <div class="sport-info">
+                            <h3>Training</h3>
+                            <button type="button" class="btn tertiary-btn">Explore</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div> <footer class="site-footer" data-scroll-section>
+            <div class="footer-container">
+                <div class="footer-column footer-logo-section">
+                    <div class="logo">
+                        <img src="nike-logo-0.png" alt="Nike Logo">
+                    </div>
+                    <p>Bringing inspiration and innovation to every athlete in the world.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                        <li><a href="#">Limited Editions</a></li>
+                        <li><a href="#">Sale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">News</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Order Tracking</a></li>
+                        <li><a href="#">Returns & Exchanges</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="ri-twitter-fill"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="ri-instagram-fill"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="ri-youtube-fill"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nike, Inc. All Rights Reserved.</p>
+                <p style="font-size: medium; margin-top: 10px;"><strong>Developed by Soumil Mittal</strong></p>
+            </div>
+        </footer>
+    </div> <div id="cart-sidebar" class="cart-sidebar">
+        <div class="cart-header">
+            <h2>Your Bag</h2> <button type="button" class="close-cart" onclick="toggleCart()">X</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <p class="empty-cart-message">Your bag is empty.</p>
+        </div>
+        <div class="cart-summary">
+            <p>Total: $<span id="cart-total">0.00</span></p>
+            <button type="button" class="checkout-button">Checkout</button>
+            <button type="button" class="clear-cart" onclick="clearCart()">Clear Bag</button>
+        </div>
+    </div>
+
+    <div class="overlay" onclick="toggleCart()"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Preloader Logic
+            const preloader = document.getElementById('preloader');
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    preloader.style.visibility = 'hidden';
+                    preloader.style.pointerEvents = 'none';
+                    document.body.style.overflow = '';
+                }, 1000);
+            });
+            document.body.style.overflow = 'hidden';
+
+            // Locomotive Scroll Initialization
+            const scroll = new LocomotiveScroll({
+                el: document.querySelector('[data-scroll-container]'),
+                smooth: true,
+            });
+
+            // Search bar functionality
+            const searchIcon = document.getElementById('search-icon');
+            const searchContainer = document.querySelector('.search-container');
+            const searchBar = document.getElementById('search-bar');
+
+            searchIcon.addEventListener('click', function (event) {
+                event.stopPropagation();
+                searchContainer.classList.toggle('active');
+                if (searchContainer.classList.contains('active')) {
+                    searchBar.focus();
+                }
+            });
+
+            document.addEventListener('click', function (event) {
+                if (!searchContainer.contains(event.target) && searchContainer.classList.contains('active')) {
+                    searchContainer.classList.remove('active');
+                }
+            });
+
+            searchBar.addEventListener('input', function () {
+                const searchTerm = searchBar.value.toLowerCase().trim();
+                document.querySelectorAll('.product-grid .product').forEach(function (product) {
+                    const title = product.querySelector('h4').textContent.toLowerCase();
+                    if (title.includes(searchTerm)) {
+                        product.style.display = 'flex';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+                scroll.update(); // Update Locomotive Scroll after filtering
+            });
+
+            // Add to Cart Functionality
+            const cartSidebar = document.getElementById('cart-sidebar');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalSpan = document.getElementById('cart-total');
+            const cartItemCountSpan = document.getElementById('cart-item-count');
+            const emptyCartMessage = document.querySelector('.empty-cart-message');
+
+            let cart = JSON.parse(localStorage.getItem('nikeShoppingCart')) || [];
+
+            // Define product data from ALL product grids on THIS page (men.html)
+            const productsData = [];
+            document.querySelectorAll('.product-grid .product').forEach(productElement => {
+                const id = parseInt(productElement.dataset.productId);
+                const name = productElement.querySelector('h4').textContent;
+                const priceText = productElement.querySelector('.price').textContent;
+                const price = parseFloat(priceText.replace('$', ''));
+                const image = productElement.querySelector('img').src;
+                productsData.push({ id, name, price, image });
+            });
+
+
+            function saveCart() {
+                localStorage.setItem('nikeShoppingCart', JSON.stringify(cart));
+                updateCartDisplay();
+            }
+
+            function getProductById(id) {
+                // This function now needs to find products from the current page's productsData
+                return productsData.find(product => product.id === id);
+            }
+
+            function updateCartDisplay() {
+                cartItemsContainer.innerHTML = '';
+                let total = 0;
+                let itemCount = 0;
+
+                if (cart.length === 0) {
+                    emptyCartMessage.style.display = 'block';
+                } else {
+                    emptyCartMessage.style.display = 'none';
+                    cart.forEach(item => {
+                        const product = getProductById(item.id);
+                        if (product) { // Ensure product exists on this page's productsData
+                            const cartItemElement = document.createElement('div');
+                            cartItemElement.classList.add('cart-item');
+                            cartItemElement.innerHTML = `
+                                <img src="${product.image}" alt="${product.name}" class="cart-item-image">
+                                <div class="cart-item-details">
+                                    <h4>${product.name}</h4>
+                                    <p>$${product.price.toFixed(2)}</p>
+                                </div>
+                                <div class="cart-item-quantity">
+                                    <button type="button" data-id="${product.id}" class="decrease-quantity">-</button>
+                                    <span>${item.quantity}</span>
+                                    <button type="button" data-id="${product.id}" class="increase-quantity">+</button>
+                                </div>
+                                <button type="button" data-id="${product.id}" class="remove-item-btn">Remove</button>
+                            `;
+                            cartItemsContainer.appendChild(cartItemElement);
+
+                            total += product.price * item.quantity;
+                            itemCount += item.quantity;
+                        } else {
+                            // If a product in the cart (from localStorage) is NOT found on this page's DOM,
+                            // it means it was added from another page (e.g., home page).
+                            // For a robust solution, you'd load all product data from a single source.
+                            // For now, we'll just show a placeholder using the stored item details.
+                            const missingProductElement = document.createElement('div');
+                            missingProductElement.classList.add('cart-item');
+                            missingProductElement.innerHTML = `
+                                <img src="placeholder.png" alt="Product" class="cart-item-image">
+                                <div class="cart-item-details">
+                                    <h4>${item.name || `Product ID: ${item.id}`}</h4>
+                                    <p>$${(item.price || 0).toFixed(2)}</p>
+                                </div>
+                                <div class="cart-item-quantity">
+                                    <span>${item.quantity}</span>
+                                </div>
+                                <button type="button" data-id="${item.id}" class="remove-item-btn">Remove</button>
+                            `;
+                            cartItemsContainer.appendChild(missingProductElement);
+                            total += (item.price || 0) * item.quantity;
+                            itemCount += item.quantity;
+                        }
+                    });
+                }
+
+                cartTotalSpan.textContent = total.toFixed(2);
+                cartItemCountSpan.textContent = itemCount;
+                scroll.update(); // Update Locomotive Scroll after cart content changes
+            }
+
+            function addProductToCart(productId) {
+                const existingItemIndex = cart.findIndex(item => item.id === productId);
+                const productToAdd = getProductById(productId);
+
+                if (!productToAdd) {
+                    console.error("Product not found for ID:", productId);
+                    return;
+                }
+
+                if (existingItemIndex > -1) {
+                    cart[existingItemIndex].quantity++;
+                } else {
+                    cart.push({ id: productId, quantity: 1, name: productToAdd.name, price: productToAdd.price, image: productToAdd.image });
+                }
+                saveCart();
+            }
+
+            function changeQuantity(productId, change) {
+                const itemIndex = cart.findIndex(item => item.id === productId);
+
+                if (itemIndex > -1) {
+                    cart[itemIndex].quantity += change;
+                    if (cart[itemIndex].quantity <= 0) {
+                        cart.splice(itemIndex, 1);
+                    }
+                    saveCart();
+                }
+            }
+
+            function removeItemFromCart(productId) {
+                cart = cart.filter(item => item.id !== productId);
+                saveCart();
+                console.log('Item removed from bag!');
+            }
+
+            window.clearCart = function () {
+                cart = [];
+                saveCart();
+                alert('Your Nike bag has been cleared!');
+                toggleCart();
+            }
+
+            window.toggleCart = function () {
+                cartSidebar.classList.toggle('open');
+                document.body.classList.toggle('cart-open');
+                const overlay = document.querySelector('.overlay');
+                if (overlay) overlay.classList.toggle('active');
+            }
+
+            // Event delegation for Add to Cart buttons
+            document.querySelectorAll('.product-grid').forEach(grid => {
+                grid.addEventListener('click', (event) => {
+                    if (event.target.classList.contains('add-to-cart-btn')) {
+                        const productId = parseInt(event.target.dataset.id);
+                        addProductToCart(productId);
+                        console.log(`${getProductById(productId).name} added to bag!`);
+                        toggleCart();
+                    }
+                });
+            });
+
+            cartItemsContainer.addEventListener('click', (event) => {
+                const target = event.target;
+                const productId = parseInt(target.dataset.id);
+
+                if (target.classList.contains('increase-quantity')) {
+                    changeQuantity(productId, 1);
+                } else if (target.classList.contains('decrease-quantity')) {
+                    changeQuantity(productId, -1);
+                } else if (target.classList.contains('remove-item-btn')) {
+                    removeItemFromCart(productId);
+                    console.log('Item removed from bag!');
+                }
+            });
+
+            // Initial display update for cart
+            updateCartDisplay();
+        });
+    </script>
+</body>
+
+</html>

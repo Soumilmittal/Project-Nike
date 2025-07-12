@@ -1,0 +1,1410 @@
+/* General Styling and Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #1a1a1a; /* Dark background color */
+    color: #f5f5f5;
+    scroll-behavior: smooth;
+}
+
+/* --- Preloader Styles --- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000; /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it's on top of everything */
+    transition: opacity 1s ease-out; /* Smooth fade-out effect */
+}
+
+.nike-logo-container {
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.preloader-nike-logo { /* Corrected class name for the image */
+    width: 150px; /* Adjust size as needed */
+    height: auto;
+    object-fit: contain;
+    filter: invert(1); /* Essential to make a dark logo white on a dark background */
+    margin-bottom: 20px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.loading-bar-border {
+    width: 300px; /* Wider loading bar */
+    height: 10px; /* Taller loading bar */
+    border: 2px solid #00bfff; /* Light blue border (Nike-esque) */
+    border-radius: 5px; /* Slightly rounded corners */
+    overflow: hidden; /* Crucial for the moving line effect inside */
+    position: relative;
+    margin-bottom: 15px; /* Space above loading text */
+}
+
+.loading-bar-fill {
+    height: 100%;
+    width: 0%; /* Starts empty, JavaScript will control or animation will fill */
+    background-color: #00bfff; /* Fill color (light blue) */
+    animation: fillBar 4s forwards cubic-bezier(0.25, 0.1, 0.25, 1); /* Slower, smoother fill */
+    position: relative;
+}
+
+/* Moving lines effect within the loading bar */
+.loading-bar-fill::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Start off-screen to the left */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4) 50%, transparent); /* Brighter, more defined line */
+    animation: moveLine 1.8s infinite linear; /* Faster, continuous movement */
+}
+
+.loading-text {
+    font-size: 1.3em; /* Slightly larger text */
+    color: #00bfff; /* Light blue text */
+    font-weight: bold;
+}
+
+/* Keyframe Animations for Preloader */
+@keyframes fillBar {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+@keyframes moveLine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+
+/* Ensure no default scrollbar for Locomotive Scroll */
+body.has-scroll-smooth {
+    overflow: hidden;
+}
+
+/* Using a class for the main container to avoid potential conflicts */
+.page-wrapper {
+    width: 100%;
+    /* Locomotive Scroll needs content to be within a scroll container */
+}
+
+.main-section { /* This is the home page hero, but reused for placeholders */
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 5%; /* Use padding for spacing */
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Navigation Bar --- */
+.nav {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #333; /* Subtle separator */
+    animation: fadeIn 1s ease-in-out;
+    flex-shrink: 0; /* Prevent nav from shrinking */
+    position: relative; /* Ensure z-index works */
+    z-index: 100; /* Above other content */
+}
+
+.nav-part-1 {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Use gap for spacing */
+}
+
+.logo {
+    height: 48px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.logo img {
+    height: 100%;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    transition: filter 0.3s ease; /* Changed from fill to filter for img */
+    filter: invert(1); /* Invert colors for white logo */
+}
+
+.logo img:hover {
+    filter: invert(0) sepia(1) saturate(5) hue-rotate(330deg) brightness(1.2); /* Converts white to orange */
+}
+
+.nav-part-1 ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-part-1 ul li {
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-part-1 ul li::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #FF6700;
+    bottom: -5px;
+    left: 0;
+    transition: width 0.4s ease;
+}
+
+.nav-part-1 ul li:hover {
+    color: #FF6700;
+}
+
+.nav-part-1 ul li:hover::after {
+    width: 100%;
+}
+
+.nav-part-1 ul li .nav-link.active { /* Style for active nav link */
+    color: #FF6700;
+}
+.nav-part-1 ul li .nav-link.active::after {
+    width: 100%;
+}
+
+
+.nav-part-2 {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-part-2 > i { /* Directly target icons to avoid styling the search icon */
+    font-size: 22px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-part-2 > i:hover {
+    color: #FF6700;
+    transform: scale(1.1);
+}
+
+.nav-part-2 .menu-icon {
+    display: none;
+}
+
+/* --- Animated Search Bar --- */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.search-bar {
+    width: 0;
+    padding: 10px 0;
+    border: none;
+    outline: none;
+    background-color: #2c2c2c;
+    color: #fff;
+    font-size: 16px;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 50px; /* Fully rounded corners */
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+}
+
+.search-container.active .search-bar {
+    width: 240px;
+    opacity: 1;
+    visibility: visible;
+    /* Add padding to the left for the icon and to the right for text */
+    padding: 10px 20px 10px 45px;
+}
+
+#search-icon {
+    position: absolute; /* Position icon relative to the container */
+    right: 5px; /* Initial position */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    cursor: pointer;
+    color: #f5f5f5;
+    padding: 8px;
+    z-index: 10;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+#search-icon:hover {
+    color: #FF6700;
+}
+
+.search-container.active #search-icon {
+    /* Move icon to the left inside the bar when active */
+    color: #FF6700;
+    right: calc(100% - 40px);
+}
+
+/* --- Main Content (General Page Content Wrapper) --- */
+.content-page {
+    display: none; /* Hidden by default */
+    width: 100%;
+    /* Add specific padding or margin here if needed for all content pages */
+}
+
+.content-page.active-page {
+    display: block; /* Show active page */
+}
+
+.hidden-page {
+    display: none !important; /* Force hide */
+}
+
+.content { /* This is for the hero section content layout */
+    flex-grow: 1; /* Allow content to fill remaining space */
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.content-left {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 5%;
+    /* Animations handled by AOS, removed direct animation properties */
+}
+
+.content-left h5 {
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #FF6700;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.content-left h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 8vw;
+    line-height: 1;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 25px;
+}
+
+.content-left p {
+    font-size: 16px;
+    color: #ccc;
+    width: 90%;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.btn {
+    background-color: #FF6700;
+    color: #fff;
+    padding: 15px 35px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+.btn:hover {
+    background-color: #fff;
+    color: #FF6700;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 103, 0, 0.2);
+}
+
+/* --- Right Content (GIF Display) --- */
+.content-right {
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Animations handled by AOS, removed direct animation properties */
+}
+
+.gif-container {
+    width: 60%;
+    height: 70%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.gif-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Product Showcase Section --- */
+.product-showcase {
+    width: 100%;
+    padding: 100px 5%;
+    background-color: #111; /* Slightly different background to separate sections */
+}
+
+.product-showcase h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    color: #fff;
+    /* Animations handled by AOS, removed direct animation properties */
+}
+
+.product-grid {
+    display: flex; /* Changed from grid to flex for better scrollbar behavior with products */
+    gap: 20px;
+    padding: 20px 0;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    flex-wrap: wrap; /* Allow wrapping for search results */
+    justify-content: center; /* Center items when they wrap */
+}
+
+.product-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.product {
+    flex: 0 0 280px;
+    height: 400px;
+    background-color: #2c2c2c;
+    border-radius: 20px;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    /* Ensure product content is above add-to-cart button but below overlay */
+    z-index: 1;
+}
+
+.product:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.product img {
+    width: 110%;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-25deg);
+    object-fit: contain;
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.product:hover img {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.1);
+}
+
+.product-info {
+    z-index: 2;
+    transition: opacity 0.4s ease;
+}
+
+.product h4 {
+    font-size: 22px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.product .category {
+    font-size: 14px;
+    font-weight: 400;
+    color: #ccc;
+    margin-bottom: 10px;
+}
+
+.product .price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #FF6700;
+}
+
+.add-to-cart-btn {
+    background-color: #FF6700;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 50px;
+    cursor: pointer;
+    position: absolute;
+    bottom: -60px; /* Initially hidden */
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.4s ease;
+    z-index: 5;
+    opacity: 0;
+    width: 80%;
+    display: flex; /* For icon alignment */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.product:hover .add-to-cart-btn {
+    bottom: 20px; /* Slide in on hover */
+    opacity: 1;
+}
+
+.product:hover .product-info {
+    opacity: 0; /* Hide info on hover to show button */
+}
+
+/* --- Collaborations Section (reused for men's sports) --- */
+.collaborations-section {
+    width: 100%;
+    padding: 100px 5%;
+    background-color: #1a1a1a; /* Match main background or choose a contrasting one */
+}
+
+.collaborations-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    color: #fff;
+    /* Animations handled by AOS */
+}
+
+.collaboration-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.collaboration-feature {
+    grid-column: span 2; /* Make the feature item span two columns on larger screens */
+    height: 550px; /* Larger height for the feature card */
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.4s ease;
+}
+
+@media (max-width: 1024px) {
+    .collaboration-feature {
+        grid-column: span 1; /* Revert to 1 column on smaller screens */
+    }
+}
+
+
+.collaboration-feature img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.collaboration-feature:hover img {
+    transform: scale(1.05);
+}
+
+.collaboration-card {
+    height: 450px; /* Standard height for smaller collaboration cards */
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease;
+}
+
+.collaboration-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.collaboration-card:hover img {
+    transform: scale(1.05);
+}
+
+.collaboration-feature::after,
+.collaboration-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0) 60%);
+    z-index: 1;
+}
+
+.collaboration-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    z-index: 2;
+    color: #fff;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s ease;
+    text-align: center;
+}
+
+.collaboration-feature:hover .collaboration-info,
+.collaboration-card:hover .collaboration-info {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.collaboration-info h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem; /* Slightly larger for feature card */
+    margin-bottom: 10px;
+}
+
+.collaboration-card .collaboration-info h3 {
+    font-size: 2.2rem;
+}
+
+.collaboration-info p {
+    margin-bottom: 20px;
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.btn.tertiary-btn {
+    background-color: transparent;
+    border: 2px solid #FF6700;
+    color: #FF6700;
+}
+
+.btn.tertiary-btn:hover {
+    background-color: #FF6700;
+    color: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 103, 0, 0.2);
+}
+
+
+/* --- Category Explore Section (reused for men's categories) --- */
+.category-explore {
+    width: 100%;
+    padding: 100px 5%;
+    background-color: #111; /* Match product showcase */
+}
+
+.category-explore h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    color: #fff;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.category-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    height: 450px;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.category-card:hover img {
+    transform: scale(1.1);
+}
+
+.category-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 20%, rgba(0,0,0,0) 60%);
+}
+
+.category-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    z-index: 2;
+    color: #fff;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s ease;
+    text-align: center;
+}
+
+.category-card:hover .category-info {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.category-info h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.category-info p {
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.btn.secondary-btn {
+    background-color: transparent;
+    border: 2px solid #fff;
+}
+
+.btn.secondary-btn:hover {
+    background-color: #fff;
+    color: #1a1a1a;
+}
+
+/* --- Footer Section --- */
+.site-footer {
+    background-color: #111;
+    padding: 80px 5% 20px;
+    border-top: 1px solid #333;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.footer-column .logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.footer-column p {
+    color: #ccc;
+    line-height: 1.7;
+}
+
+.footer-column h4 {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #FF6700;
+    padding-left: 5px;
+}
+
+.social-icons a {
+    color: #ccc;
+    font-size: 24px;
+    margin-right: 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.social-icons a:hover {
+    color: #FF6700;
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #333;
+}
+
+.footer-bottom p {
+    color: #888;
+    font-size: 14px;
+}
+
+/* --- Cart Specific Styles --- */
+.cart-icon {
+    font-size: 22px; /* Match other icons */
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: flex; /* To align icon and count */
+    align-items: center;
+    gap: 4px; /* Space between icon and count */
+}
+
+.cart-icon:hover {
+    color: #FF6700;
+    transform: scale(1.1);
+}
+
+#cart-item-count {
+    background-color: #FF6700; /* Nike Orange */
+    color: white;
+    border-radius: 50%;
+    padding: 2px 7px;
+    font-size: 0.7em;
+    position: absolute;
+    top: -5px;
+    right: -10px; /* Adjust positioning relative to cart icon */
+    min-width: 20px; /* Ensure it looks good for single/double digits */
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px; /* Hidden by default, larger width for more items */
+    width: 400px; /* Increased width */
+    max-width: 90vw; /* Max width for smaller screens */
+    height: 100%;
+    background-color: #111; /* Dark background */
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+    transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother transition */
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    color: #f5f5f5;
+}
+
+.cart-sidebar.open {
+    right: 0;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid #333;
+    background-color: #222;
+}
+
+.cart-header h2 {
+    margin: 0;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2em;
+    color: #fff;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    color: #f5f5f5;
+    transition: color 0.3s ease;
+}
+
+.close-cart:hover {
+    color: #FF6700;
+}
+
+.cart-items {
+    flex-grow: 1;
+    padding: 20px 30px;
+    overflow-y: auto;
+    -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.cart-items::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome, Safari, Opera */
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #333;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.cart-item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-right: 20px;
+    background-color: #333; /* Placeholder for images */
+}
+
+.cart-item-details {
+    flex-grow: 1;
+}
+
+.cart-item-details h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #fff;
+}
+
+.cart-item-details p {
+    margin: 0;
+    color: #ccc;
+    font-size: 0.95em;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.cart-item-quantity button {
+    background-color: #222;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.cart-item-quantity button:hover {
+    background-color: #333;
+    color: #FF6700;
+}
+
+.cart-item-quantity span {
+    margin: 0 10px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.remove-item-btn {
+    background-color: transparent;
+    color: #ff4d4d; /* Reddish for delete */
+    border: 1px solid #ff4d4d;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.remove-item-btn:hover {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.cart-summary {
+    padding: 20px 30px;
+    border-top: 1px solid #333;
+    text-align: right;
+    background-color: #222;
+}
+
+.cart-summary p {
+    margin: 0 0 15px 0;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.checkout-button, .clear-cart {
+    background-color: #FF6700;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.checkout-button:hover {
+    background-color: #e05e00;
+}
+
+.clear-cart {
+    background-color: #6c757d; /* Gray for clear */
+}
+
+.clear-cart:hover {
+    background-color: #5a6268;
+}
+
+.empty-cart-message {
+    text-align: center;
+    color: #888;
+    margin-top: 50px;
+    font-size: 1.1em;
+    display: block; /* Ensure it's block by default, JavaScript will toggle visibility */
+}
+
+/* Overlay for when cart is open */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay */
+    z-index: 999; /* Below cart, above main content */
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/*
+========================================
+MEN'S SECTION SPECIFIC STYLES
+========================================
+*/
+.men-hero-section {
+    width: 100%;
+    min-height: 80vh; /* Slightly smaller than main hero for variety */
+    background-image: url('https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_1920,c_limit/6fdd45f7-f13c-4467-933e-e2b2c3c737d2/the-story-of-jordan-x-travis-scott.jpg'); /* Example image for men's hero */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    padding: 50px 5%;
+    box-sizing: border-box;
+}
+
+.men-hero-section::before { /* Overlay for readability */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.men-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+}
+
+.men-hero-content h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 6vw; /* Responsive font size */
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    line-height: 1;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+}
+
+.men-hero-content p {
+    font-size: 1.3em;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.men-categories-section, .men-featured-products-section, .men-shop-by-sport-section {
+    width: 100%;
+    padding: 100px 5%;
+    background-color: #111; /* Consistent dark background */
+}
+
+.men-categories-section h2, .men-featured-products-section h2, .men-shop-by-sport-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    color: #fff;
+}
+
+.men-category-grid, .sport-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.men-category-card, .sport-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    height: 400px; /* Consistent card height */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease;
+}
+
+.men-category-card:hover, .sport-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.men-category-card img, .sport-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.men-category-card:hover img, .sport-card:hover img {
+    transform: scale(1.05);
+}
+
+.men-category-card::after, .sport-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0) 60%);
+    z-index: 1;
+}
+
+.men-category-info, .sport-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px;
+    z-index: 2;
+    color: #fff;
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.5s ease;
+    text-align: center;
+}
+
+.men-category-card:hover .men-category-info, .sport-card:hover .sport-info {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.men-category-info h3, .sport-info h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+/*
+========================================
+RESPONSIVE DESIGN
+(Adjustments for various screen sizes)
+========================================
+*/
+@media (max-width: 1024px) {
+    .content-left h1 {
+        font-size: 10vw;
+    }
+    .nav-part-1 ul {
+        gap: 25px;
+    }
+    .product {
+        flex: 0 0 250px;
+        height: 360px;
+    }
+    .collaboration-feature {
+        grid-column: span 1; /* Revert to 1 column on smaller screens for consistency */
+        height: 450px; /* Match other cards on smaller screens */
+    }
+    .collaboration-info h3 {
+        font-size: 2.2rem; /* Adjust font size for smaller screens */
+    }
+    .men-hero-content h1 {
+        font-size: 8vw;
+    }
+    .men-categories-section h2, .men-featured-products-section h2, .men-shop-by-sport-section h2 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-part-1 ul {
+        display: none;
+    }
+    .nav-part-2 .menu-icon {
+        display: block;
+    }
+    .main-section {
+        min-height: auto;
+    }
+    .content {
+        flex-direction: column;
+        padding: 50px 0;
+    }
+    .content-left, .content-right {
+        width: 100%;
+        text-align: center;
+    }
+    .content-left {
+        padding: 50px 0;
+        align-items: center;
+    }
+    .content-left h1 {
+        font-size: 18vw;
+    }
+    .content-left p {
+        width: 100%;
+    }
+    .gif-container {
+        height: 300px;
+        width: 100%;
+    }
+    .product-showcase h2, .category-explore h2, .collaborations-section h2 {
+        font-size: 3rem;
+    }
+    .search-container.active .search-bar {
+        width: 180px; /* Adjust for smaller screens */
+    }
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .footer-column .logo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .social-icons {
+        text-align: center;
+    }
+    .social-icons a {
+        margin: 0 10px;
+    }
+
+    .collaboration-feature, .collaboration-card {
+        height: 380px; /* Further adjust height for very small screens */
+    }
+    .collaboration-info {
+        padding: 20px; /* Adjust padding for smaller screens */
+    }
+    .collaboration-info h3 {
+        font-size: 1.8rem;
+    }
+    .collaboration-info p {
+        font-size: 0.9rem;
+    }
+    .btn.secondary-btn, .btn.tertiary-btn {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+
+    /* Cart Sidebar for small screens */
+    .cart-sidebar {
+        width: 100%; /* Full width on small screens */
+        right: -100%; /* Hide off-screen to the right */
+        transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .cart-sidebar.open {
+        right: 0;
+    }
+    .cart-header {
+        padding: 15px 20px;
+    }
+    .cart-header h2 {
+        font-size: 1.8em;
+    }
+    .cart-items {
+        padding: 15px 20px;
+    }
+    .cart-item {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+    .cart-item-image {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .cart-item-details, .cart-item-quantity {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .cart-item-quantity {
+        justify-content: center;
+    }
+    .remove-item-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .cart-summary {
+        padding: 15px 20px;
+    }
+    .checkout-button, .clear-cart {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    /* Men's specific responsive adjustments */
+    .men-hero-content h1 {
+        font-size: 10vw;
+    }
+    .men-categories-section h2, .men-featured-products-section h2, .men-shop-by-sport-section h2 {
+        font-size: 2.5rem;
+    }
+    .men-category-card, .sport-card {
+        height: 350px;
+    }
+    .men-category-info h3, .sport-info h3 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-showcase, .collaborations-section, .category-explore {
+        padding: 60px 3%; /* Reduce padding on very small screens */
+    }
+    .product-showcase h2, .collaborations-section h2, .category-explore h2 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+    .collaboration-feature, .collaboration-card, .category-card {
+        min-width: 280px; /* Ensure cards don't get too small */
+    }
+    .collaboration-feature {
+        height: 350px;
+    }
+    .collaboration-card, .category-card {
+        height: 300px;
+    }
+    .collaboration-info h3 {
+        font-size: 1.5rem;
+    }
+    .collaboration-info p {
+        font-size: 0.85rem;
+        margin-bottom: 15px;
+    }
+    /* Men's specific responsive adjustments */
+    .men-hero-content h1 {
+        font-size: 12vw;
+    }
+    .men-hero-content p {
+        font-size: 1em;
+    }
+    .men-categories-section h2, .men-featured-products-section h2, .men-shop-by-sport-section h2 {
+        font-size: 2rem;
+    }
+    .men-category-card, .sport-card {
+        height: 300px;
+    }
+    .men-category-info h3, .sport-info h3 {
+        font-size: 1.8rem;
+    }
+}
