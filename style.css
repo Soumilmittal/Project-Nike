@@ -8,27 +8,29 @@
 html,
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #1a1a1a;
-    /* Dark background color */
+    background-color: #1a1a1a; /* Dark background color */
     color: #f5f5f5;
     scroll-behavior: smooth;
+    /* Optional: Set a base font size for easier rem scaling */
+    /* font-size: 16px; */
 }
 
+/* --- Preloader Styles (Consolidated and Corrected) --- */
 #preloader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000;
-    /* Dark background */
+    background-color: #000; /* Dark background */
     display: flex;
+    flex-direction: column; /* Changed to column for logo, bar, and text stacking */
     justify-content: center;
     align-items: center;
-    z-index: 9999;
-    /* Ensure it's on top of everything */
-    transition: opacity 2s ease-out;
-    /* Smooth fade-out effect */
+    z-index: 9999; /* Ensure it's on top of everything */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1s ease-out, visibility 1s ease-out;
 }
 
 .nike-logo-container {
@@ -44,21 +46,28 @@ body {
 
 /* Preloader Logo and Tagline */
 .preloader-nike-logo {
-    width: 200px;
+    width: 200px; /* Adjust size as needed */
     height: auto;
     object-fit: contain;
-    filter: invert(1);
+    filter: invert(1); /* Make the Nike logo white */
     margin-bottom: 20px;
     animation: fadeIn 1s ease-in-out;
 }
 
-.preloader-tagline {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.5rem;
-    color: #fff;
-    text-transform: uppercase;
-    animation: fadeInUp 0.8s ease-out 0.1s;
-    /* Delay slightly */
+.loading-bar-border {
+    width: 200px; /* Consistent width with logo */
+    height: 8px;
+    border: 1px solid #FF6700;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.loading-bar-fill {
+    width: 0%;
+    height: 100%;
+    background-color: #FF6700;
+    animation: fillBar 1.5s forwards ease-out; /* Uses your existing @keyframes fillBar */
 }
 
 .loading-text {
@@ -79,38 +88,6 @@ body {
     }
 }
 
-@keyframes moveLine {
-    0% {
-        left: -100%;
-    }
-
-    100% {
-        left: 100%;
-    }
-}
-
-
-/* Ensure no default scrollbar for Locomotive Scroll */
-body.has-scroll-smooth {
-    overflow: hidden;
-}
-
-/* Using a class for the main container to avoid potential conflicts */
-.page-wrapper {
-    width: 100%;
-    /* Locomotive Scroll needs content to be within a scroll container */
-}
-
-.main-section {
-    width: 100%;
-    min-height: 100vh;
-    padding: 0 5%;
-    /* Use padding for spacing */
-    display: flex;
-    flex-direction: column;
-}
-
-/* --- Animations --- */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -133,6 +110,25 @@ body.has-scroll-smooth {
     }
 }
 
+/* Ensure no default scrollbar for Locomotive Scroll */
+body.has-scroll-smooth {
+    overflow: hidden;
+}
+
+/* Using a class for the main container to avoid potential conflicts */
+.page-wrapper {
+    width: 100%;
+    /* Locomotive Scroll needs content to be within a scroll container */
+}
+
+.main-section {
+    width: 100%;
+    min-height: 100vh;
+    padding: 0 5%;
+    display: flex;
+    flex-direction: column;
+}
+
 /* --- Navigation Bar --- */
 .nav {
     height: 100px;
@@ -141,21 +137,16 @@ body.has-scroll-smooth {
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #333;
-    /* Subtle separator */
     animation: fadeIn 1s ease-in-out;
     flex-shrink: 0;
-    /* Prevent nav from shrinking */
     position: relative;
-    /* Ensure z-index works */
     z-index: 100;
-    /* Above other content */
 }
 
 .nav-part-1 {
     display: flex;
     align-items: center;
     gap: 50px;
-    /* Use gap for spacing */
 }
 
 .logo {
@@ -172,14 +163,13 @@ body.has-scroll-smooth {
     width: auto;
     display: block;
     object-fit: contain;
-    transition: fill 0.3s ease;
-    filter: invert(1);
-    /* Invert colors for white logo */
+    filter: invert(1); /* Invert colors for white logo */
 }
 
-.logo img:hover {
+/* Note: `fill` property is for SVG, not images directly. Hover for image color change is complex. */
+/* .logo img:hover {
     fill: #FF6700;
-}
+} */
 
 .nav-part-1 ul {
     display: flex;
@@ -233,14 +223,13 @@ body.has-scroll-smooth {
     gap: 30px;
 }
 
-.nav-part-2>i {
-    /* Directly target icons to avoid styling the search icon */
+.nav-part-2 > i {
     font-size: 22px;
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.nav-part-2>i:hover {
+.nav-part-2 > i:hover {
     color: #FF6700;
     transform: scale(1.1);
 }
@@ -268,24 +257,19 @@ body.has-scroll-smooth {
     opacity: 0;
     visibility: hidden;
     border-radius: 50px;
-    /* Fully rounded corners */
     transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-    /* Smoother transition */
 }
 
 .search-container.active .search-bar {
     width: 240px;
     opacity: 1;
     visibility: visible;
-    /* Add padding to the left for the icon and to the right for text */
     padding: 10px 20px 10px 45px;
 }
 
 #search-icon {
     position: absolute;
-    /* Position icon relative to the container */
     right: 5px;
-    /* Initial position */
     top: 50%;
     transform: translateY(-50%);
     font-size: 22px;
@@ -301,16 +285,13 @@ body.has-scroll-smooth {
 }
 
 .search-container.active #search-icon {
-    /* Move icon to the left inside the bar when active */
     color: #FF6700;
     right: calc(100% - 40px);
 }
 
-
-/* --- Main Content --- */
+/* --- Main Content (Hero Section) --- */
 .content {
     flex-grow: 1;
-    /* Allow content to fill remaining space */
     width: 100%;
     display: flex;
     align-items: center;
@@ -376,7 +357,7 @@ body.has-scroll-smooth {
     box-shadow: 0 10px 20px rgba(255, 103, 0, 0.2);
 }
 
-/* Links inside .btn buttons: white, no underline, inherit button style */
+/* Ensure links inside buttons inherit or adapt styling */
 .btn a {
     color: #fff;
     text-decoration: none;
@@ -412,15 +393,14 @@ body.has-scroll-smooth {
     object-fit: cover;
 }
 
-/* --- Product Showcase Section --- */
-.product-showcase {
+/* --- Product Showcase Section (Renamed to match HTML) --- */
+.latest-drops-section { /* Renamed from .product-showcase */
     width: 100%;
     padding: 100px 5%;
     background-color: #111;
-    /* Slightly different background to separate sections */
 }
 
-.product-showcase h2 {
+.latest-drops-section h2 { /* Renamed from .product-showcase h2 */
     font-family: 'Bebas Neue', sans-serif;
     font-size: 4rem;
     text-align: center;
@@ -431,17 +411,15 @@ body.has-scroll-smooth {
 }
 
 .product-grid {
-    display: flex;
-    /* Changed from grid to flex for better scrollbar behavior with products */
+    display: flex; /* Kept flex for horizontal scroll if desired, or change to grid */
     gap: 20px;
     padding: 20px 0;
-    overflow-x: auto;
+    overflow-x: auto; /* Enable horizontal scrolling */
     -ms-overflow-style: none;
     scrollbar-width: none;
-    flex-wrap: wrap;
-    /* Allow wrapping for search results */
-    justify-content: center;
-    /* Center items when they wrap */
+    /* Consider flex-wrap: wrap if you want items to wrap in a grid-like fashion */
+    flex-wrap: wrap; /* Allows wrapping for search results or smaller screens */
+    justify-content: center; /* Centers items when they wrap */
 }
 
 .product-grid::-webkit-scrollbar {
@@ -462,7 +440,6 @@ body.has-scroll-smooth {
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    /* Ensure product content is above add-to-cart button but below overlay */
     z-index: 1;
 }
 
@@ -522,8 +499,7 @@ body.has-scroll-smooth {
     border-radius: 50px;
     cursor: pointer;
     position: absolute;
-    bottom: -60px;
-    /* Initially hidden */
+    bottom: -60px; /* Initially hidden */
     left: 50%;
     transform: translateX(-50%);
     transition: all 0.4s ease;
@@ -531,29 +507,25 @@ body.has-scroll-smooth {
     opacity: 0;
     width: 80%;
     display: flex;
-    /* For icon alignment */
     align-items: center;
     justify-content: center;
     gap: 8px;
 }
 
 .product:hover .add-to-cart-btn {
-    bottom: 20px;
-    /* Slide in on hover */
+    bottom: 20px; /* Slide in on hover */
     opacity: 1;
 }
 
 .product:hover .product-info {
-    opacity: 0;
-    /* Hide info on hover to show button */
+    opacity: 0; /* Hide info on hover to show button */
 }
 
-/* --- NEW: Collaborations Section --- */
+/* --- Collaborations Section --- */
 .collaborations-section {
     width: 100%;
     padding: 100px 5%;
     background-color: #1a1a1a;
-    /* Match main background or choose a contrasting one */
 }
 
 .collaborations-section h2 {
@@ -574,9 +546,7 @@ body.has-scroll-smooth {
 
 .collaboration-feature {
     grid-column: span 2;
-    /* Make the feature item span two columns on larger screens */
     height: 550px;
-    /* Larger height for the feature card */
     position: relative;
     border-radius: 20px;
     overflow: hidden;
@@ -587,11 +557,9 @@ body.has-scroll-smooth {
 
 @media (max-width: 1024px) {
     .collaboration-feature {
-        grid-column: span 1;
-        /* Revert to 1 column on smaller screens */
+        grid-column: span 1; /* Revert to 1 column on smaller screens */
     }
 }
-
 
 .collaboration-feature img {
     width: 100%;
@@ -606,7 +574,6 @@ body.has-scroll-smooth {
 
 .collaboration-card {
     height: 450px;
-    /* Standard height for smaller collaboration cards */
     position: relative;
     border-radius: 20px;
     overflow: hidden;
@@ -661,7 +628,6 @@ body.has-scroll-smooth {
 .collaboration-info h3 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2.8rem;
-    /* Slightly larger for feature card */
     margin-bottom: 10px;
 }
 
@@ -688,13 +654,11 @@ body.has-scroll-smooth {
     box-shadow: 0 10px 20px rgba(255, 103, 0, 0.2);
 }
 
-
 /* --- Category Explore Section --- */
 .category-explore {
     width: 100%;
     padding: 100px 5%;
     background-color: #111;
-    /* Match product showcase */
 }
 
 .category-explore h2 {
@@ -856,59 +820,22 @@ body.has-scroll-smooth {
     font-size: 14px;
 }
 
-/* --- NEW: Preloader Styles --- */
-#preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #1a1a1a;
-    /* Match your main background */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    /* Ensure it's on top of everything */
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 1s ease-out, visibility 1s ease-out;
-}
-
-.preloader-logo {
-    width: 150px;
-    /* Adjust size as needed */
-    height: auto;
-    object-fit: contain;
-    filter: invert(1);
-    /* Make the Nike logo white */
-    margin-bottom: 20px;
-    animation: fadeIn 0.8s ease-in-out;
-}
-
-.preloader-tagline {
-    font-family: 'Bebas Neue', sans-serif;
-    /* Use your Bebas Neue font */
-    font-size: 2.5rem;
-    color: #fff;
-    text-transform: uppercase;
-    animation: fadeInUp 0.8s ease-out 0.2s;
-    /* Delay slightly */
+/* Added class for developer credit from HTML suggestion */
+.footer-bottom .developer-credit {
+    font-size: medium;
+    margin-top: 10px;
+    color: #888; /* Ensure consistent color */
 }
 
 /* --- Cart Specific Styles --- */
 .cart-icon {
     font-size: 22px;
-    /* Match other icons */
     cursor: pointer;
     position: relative;
     transition: color 0.3s ease, transform 0.3s ease;
     display: flex;
-    /* To align icon and count */
     align-items: center;
     gap: 4px;
-    /* Space between icon and count */
 }
 
 .cart-icon:hover {
@@ -918,7 +845,6 @@ body.has-scroll-smooth {
 
 #cart-item-count {
     background-color: #FF6700;
-    /* Nike Orange */
     color: white;
     border-radius: 50%;
     padding: 2px 7px;
@@ -926,9 +852,7 @@ body.has-scroll-smooth {
     position: absolute;
     top: -5px;
     right: -10px;
-    /* Adjust positioning relative to cart icon */
     min-width: 20px;
-    /* Ensure it looks good for single/double digits */
     text-align: center;
     box-sizing: border-box;
 }
@@ -937,17 +861,12 @@ body.has-scroll-smooth {
     position: fixed;
     top: 0;
     right: -400px;
-    /* Hidden by default, larger width for more items */
     width: 400px;
-    /* Increased width */
     max-width: 90vw;
-    /* Max width for smaller screens */
     height: 100%;
     background-color: #111;
-    /* Dark background */
     box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
     transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    /* Smoother transition */
     display: flex;
     flex-direction: column;
     z-index: 1000;
@@ -992,14 +911,11 @@ body.has-scroll-smooth {
     padding: 20px 30px;
     overflow-y: auto;
     -ms-overflow-style: none;
-    /* Hide scrollbar for IE/Edge */
     scrollbar-width: none;
-    /* Hide scrollbar for Firefox */
 }
 
 .cart-items::-webkit-scrollbar {
     display: none;
-    /* Hide scrollbar for Chrome, Safari, Opera */
 }
 
 .cart-item {
@@ -1023,7 +939,6 @@ body.has-scroll-smooth {
     border-radius: 5px;
     margin-right: 20px;
     background-color: #333;
-    /* Placeholder for images */
 }
 
 .cart-item-details {
@@ -1076,7 +991,6 @@ body.has-scroll-smooth {
 .remove-item-btn {
     background-color: transparent;
     color: #ff4d4d;
-    /* Reddish for delete */
     border: 1px solid #ff4d4d;
     padding: 8px 12px;
     border-radius: 5px;
@@ -1125,7 +1039,6 @@ body.has-scroll-smooth {
 
 .clear-cart {
     background-color: #6c757d;
-    /* Gray for clear */
 }
 
 .clear-cart:hover {
@@ -1138,7 +1051,6 @@ body.has-scroll-smooth {
     margin-top: 50px;
     font-size: 1.1em;
     display: block;
-    /* Ensure it's block by default, JavaScript will toggle visibility */
 }
 
 /* Overlay for when cart is open */
@@ -1149,9 +1061,7 @@ body.has-scroll-smooth {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
-    /* Darker overlay */
     z-index: 999;
-    /* Below cart, above main content */
     display: none;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -1179,20 +1089,17 @@ body.has-scroll-smooth {
 
     .collaboration-feature {
         grid-column: span 1;
-        /* Revert to 1 column on smaller screens for consistency */
         height: 450px;
-        /* Match other cards on smaller screens */
     }
 
     .collaboration-info h3 {
         font-size: 2.2rem;
-        /* Adjust font size for smaller screens */
     }
 }
 
 @media (max-width: 768px) {
     .nav-part-1 ul {
-        display: none;
+        display: none; /* This hides the nav links, JS would show a mobile menu */
     }
 
     .nav-part-2 .menu-icon {
@@ -1232,7 +1139,7 @@ body.has-scroll-smooth {
         width: 100%;
     }
 
-    .product-showcase h2,
+    .latest-drops-section h2, /* Changed from .product-showcase h2 */
     .category-explore h2,
     .collaborations-section h2 {
         font-size: 3rem;
@@ -1240,7 +1147,6 @@ body.has-scroll-smooth {
 
     .search-container.active .search-bar {
         width: 180px;
-        /* Adjust for smaller screens */
     }
 
     .footer-container {
@@ -1264,12 +1170,10 @@ body.has-scroll-smooth {
     .collaboration-feature,
     .collaboration-card {
         height: 380px;
-        /* Further adjust height for very small screens */
     }
 
     .collaboration-info {
         padding: 20px;
-        /* Adjust padding for smaller screens */
     }
 
     .collaboration-info h3 {
@@ -1289,9 +1193,7 @@ body.has-scroll-smooth {
     /* Cart Sidebar for small screens */
     .cart-sidebar {
         width: 100%;
-        /* Full width on small screens */
         right: -100%;
-        /* Hide off-screen to the right */
         transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
@@ -1351,15 +1253,13 @@ body.has-scroll-smooth {
 }
 
 @media (max-width: 480px) {
-
-    .product-showcase,
+    .latest-drops-section, /* Changed from .product-showcase */
     .collaborations-section,
     .category-explore {
         padding: 60px 3%;
-        /* Reduce padding on very small screens */
     }
 
-    .product-showcase h2,
+    .latest-drops-section h2, /* Changed from .product-showcase h2 */
     .collaborations-section h2,
     .category-explore h2 {
         font-size: 2.5rem;
@@ -1370,7 +1270,6 @@ body.has-scroll-smooth {
     .collaboration-card,
     .category-card {
         min-width: 280px;
-        /* Ensure cards don't get too small */
     }
 
     .collaboration-feature {
@@ -1427,13 +1326,14 @@ body.has-scroll-smooth {
     transition: opacity 0.4s, transform 0.4s, filter 0.4s;
 }
 
+/* These styles are likely for the `mens.html` page, but are present here. */
+/* Keeping them separate for clarity, assuming they are intentionally here for shared styles. */
 .men-categories-section,
 .men-featured-products-section,
 .men-shop-by-sport-section {
     width: 100%;
     padding: 100px 5%;
     background-color: #111;
-    /* Consistent dark background */
 }
 
 .men-categories-section h2,
@@ -1463,7 +1363,6 @@ body.has-scroll-smooth {
     overflow: hidden;
     cursor: pointer;
     height: 400px;
-    /* Consistent card height */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: transform 0.4s ease;
 }
@@ -1525,14 +1424,4 @@ body.has-scroll-smooth {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2.5rem;
     margin-bottom: 15px;
-}
-
-/* DEBUG: Force visibility for Our Latest Drops section and products */
-.latest-drops-section, .product-showcase, .product-grid, .product {
-    display: block !important;
-    opacity: 1 !important;
-    position: static !important;
-    z-index: 1000 !important;
-    background: #222 !important;
-    color: #fff !important;
 }
