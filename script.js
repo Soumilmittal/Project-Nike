@@ -324,17 +324,17 @@ document.addEventListener('DOMContentLoaded', function () {
             duration: 0.4,
             ease: "power2.out"
         }, 0) // Start at the same time
-        .to(info, {
-            opacity: 0,
-            y: -20,
-            duration: 0.2
-        }, 0)
-        .to(btn, {
-            bottom: "20px",
-            opacity: 1,
-            duration: 0.3,
-            ease: "back.out(1.7)"
-        }, 0.1); // Slightly delay button for sequential feel
+            .to(info, {
+                opacity: 0,
+                y: -20,
+                duration: 0.2
+            }, 0)
+            .to(btn, {
+                bottom: "20px",
+                opacity: 1,
+                duration: 0.3,
+                ease: "back.out(1.7)"
+            }, 0.1); // Slightly delay button for sequential feel
 
         product.addEventListener("mouseenter", () => tl.play());
         product.addEventListener("mouseleave", () => tl.reverse());
